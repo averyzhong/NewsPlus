@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">NewsPlus</string>
+    <string name="comment_count">评论数:%1$d</string>
+    <string name="show_comments">查看评论(%1$s)>></string>
+</resources>
