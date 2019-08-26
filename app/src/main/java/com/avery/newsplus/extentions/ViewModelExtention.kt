@@ -1,4 +1,4 @@
-package com.fonsview.mangotv.extentions
+package com.avery.newsplus.extentions
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
