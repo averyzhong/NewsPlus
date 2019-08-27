@@ -10,7 +10,7 @@ import com.avery.newsplus.list.NewsListFragment
 class ListFragmentAdapter(
     fragmentManager: FragmentManager,
     private val categories: List<Category>
-) : FragmentStatePagerAdapter(fragmentManager) {
+) : FragmentPagerAdapter(fragmentManager) {
 
     private val listFragments: MutableList<NewsListFragment> = mutableListOf()
 

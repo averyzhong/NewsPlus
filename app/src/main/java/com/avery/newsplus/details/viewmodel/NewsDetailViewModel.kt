@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.avery.newsplus.api.model.Resource
 import com.avery.newsplus.api.model.NewsDetail
 import com.avery.newsplus.details.repository.NewsDetailRepository
-import com.fonsview.mangotv.extentions.launch
+import com.avery.newsplus.extentions.launch
 
 class NewsDetailViewModel(
     private val repository: NewsDetailRepository

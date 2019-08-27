@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 
-abstract class LazyLoagFragment : Fragment() {
+abstract class LazyLoadFragment : Fragment() {
     private var isDataLoaded = false
     private var isViewCreated = false
     private var isVisibleToUser = false
@@ -17,7 +17,7 @@ abstract class LazyLoagFragment : Fragment() {
 
     override fun setUserVisibleHint(yes: Boolean) {
         super.setUserVisibleHint(yes)
-        isVisibleToUser = true
+        isVisibleToUser = yes
         startLoadData()
     }
 
@@ -29,5 +29,5 @@ abstract class LazyLoagFragment : Fragment() {
 
     }
 
-    abstract fun loadData()
+    protected abstract fun loadData()
 }

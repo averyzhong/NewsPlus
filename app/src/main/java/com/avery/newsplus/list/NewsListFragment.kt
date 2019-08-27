@@ -3,32 +3,25 @@ package com.avery.newsplus.list
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
-import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.avery.newsplus.R
 import com.avery.newsplus.api.NewsService
 import com.avery.newsplus.api.ServiceFactory
-import com.avery.newsplus.comment.CommentsActivity
 import com.avery.newsplus.details.DetailsActivity
 import com.avery.newsplus.list.adapter.NewsMetaAdapter
 import com.avery.newsplus.list.repository.NewsListRepository
 import com.avery.newsplus.list.viewmodel.NewsListViewModel
-import kotlinx.android.synthetic.main.fragment_details.*
 import kotlinx.android.synthetic.main.fragment_list.*
 
 @Suppress("UNCHECKED_CAST")
-class NewsListFragment : LazyLoagFragment() {
+class NewsListFragment : LazyLoadFragment() {
 
     private lateinit var adapter: NewsMetaAdapter
 
@@ -75,8 +68,8 @@ class NewsListFragment : LazyLoagFragment() {
     }
 
     override fun loadData() {
+        println("=========loadData: ${arguments?.getInt("categoryId")}")
         viewModel.loadNewsList(arguments?.getInt("categoryId") ?: 1)
     }
-
 
 }
