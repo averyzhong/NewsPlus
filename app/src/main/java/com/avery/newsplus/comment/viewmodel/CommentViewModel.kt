@@ -4,7 +4,7 @@ import androidx.lifecycle.*
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.avery.newsplus.api.model.Comment
-import com.avery.newsplus.comment.datasource.CommentDatasourceFactory
+import com.avery.newsplus.comment.datasource.CommentDataSourceFactory
 import com.avery.newsplus.comment.repository.CommentRepository
 
 class CommentViewModel(
@@ -14,7 +14,7 @@ class CommentViewModel(
     private val newsIdLiveData = MutableLiveData<String>()
 
     val newsComments: LiveData<PagedList<Comment>> = Transformations.switchMap(newsIdLiveData) { newsId ->
-        val dataSourceFactory = CommentDatasourceFactory(viewModelScope, newsId, repository)
+        val dataSourceFactory = CommentDataSourceFactory(viewModelScope, newsId, repository)
         return@switchMap LivePagedListBuilder(
             dataSourceFactory,
             PagedList.Config.Builder()

@@ -5,7 +5,7 @@ import com.avery.newsplus.api.model.Comment
 import com.avery.newsplus.comment.repository.CommentRepository
 import kotlinx.coroutines.CoroutineScope
 
-class CommentDatasourceFactory(
+class CommentDataSourceFactory(
     private val coroutineScope: CoroutineScope,
     private val newsId: String,
     private val repository: CommentRepository
