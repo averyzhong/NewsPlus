@@ -55,7 +55,6 @@ class DetailsFragment : Fragment() {
         loadData()
     }
 
-    @SuppressLint("SetJavaScriptEnabled")
     private fun setupUIElement() {
         arguments?.let { it ->
             val newsMetaItem = it.getParcelable("newsMetaItem") as? NewsMetaItem
