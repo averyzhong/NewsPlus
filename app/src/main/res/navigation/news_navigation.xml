@@ -8,12 +8,12 @@
 
     <fragment
             android:id="@+id/homeFragment"
-            android:name="com.avery.newsplus.home.HomeFragment"
+            android:name="com.avery.newsplus.home.ui.HomeFragment"
             android:label="fragment_home"
             tools:layout="@layout/fragment_home"/>
 
     <fragment android:id="@+id/listFragment"
-              android:name="com.avery.newsplus.list.NewsListFragment"
+              android:name="com.avery.newsplus.list.ui.NewsListFragment"
               android:label="fragment_list"
               tools:layout="@layout/fragment_list">
         <action android:id="@+id/action_listFragment_to_detailsFragment"
@@ -21,7 +21,7 @@
     </fragment>
 
     <fragment android:id="@+id/detailsFragment"
-              android:name="com.avery.newsplus.details.DetailsFragment"
+              android:name="com.avery.newsplus.details.ui.DetailsFragment"
               android:label="fragment_details"
               tools:layout="@layout/fragment_details"/>
 </navigation>
