@@ -6,6 +6,6 @@
 
 ## 快照
 
-![](https://img-blog.csdnimg.cn/20191202205941751.png) 
+![](snapshot/20191202205941751.png) 
 
 
