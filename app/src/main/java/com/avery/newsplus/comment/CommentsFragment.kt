@@ -54,7 +54,7 @@ class CommentsFragment : Fragment() {
     }
 
     private fun subscribe() {
-        viewModel.newsComments.observe(this, Observer {
+        viewModel.newsComments.observe(viewLifecycleOwner, Observer {
             adapter.submitList(it)
         })
     }
