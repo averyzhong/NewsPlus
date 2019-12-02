@@ -7,11 +7,10 @@ import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
 /**
- * ViewModel扩展，主要添加携程构建器工具方法
+ * ViewModel扩展，添加协程构建器工具方法
  *
  * @author Avery
  */
-
 
 var exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
     print("Throws an exception with message: ${throwable.message}")
