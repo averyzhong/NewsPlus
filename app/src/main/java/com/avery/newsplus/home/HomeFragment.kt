@@ -42,7 +42,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun subscribe() {
-        viewModel.categoryList.observe(this, Observer {
+        viewModel.categoryList.observe(viewLifecycleOwner, Observer {
             setupViewPager(it)
         })
     }

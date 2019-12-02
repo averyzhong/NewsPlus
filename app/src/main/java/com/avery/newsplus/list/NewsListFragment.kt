@@ -61,14 +61,13 @@ class NewsListFragment : LazyLoadFragment() {
     }
 
     private fun subscribe() {
-        viewModel.newsMetaItems.observe(this, Observer {
+        viewModel.newsMetaItems.observe(viewLifecycleOwner, Observer {
             adapter.submitList(it)
 
         })
     }
 
     override fun loadData() {
-        println("=========loadData: ${arguments?.getInt("categoryId")}")
         viewModel.loadNewsList(arguments?.getInt("categoryId") ?: 1)
     }
 

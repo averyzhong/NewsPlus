@@ -83,7 +83,7 @@ class DetailsFragment : Fragment() {
     }
 
     private fun subscribe() {
-        viewModel.newDetail.observe(this, Observer {
+        viewModel.newDetail.observe(viewLifecycleOwner, Observer {
             showDetail(it)
         })
     }
