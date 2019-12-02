@@ -17,6 +17,12 @@ import com.avery.newsplus.home.adapter.ListFragmentAdapter
 import com.avery.newsplus.api.model.Category
 import kotlinx.android.synthetic.main.fragment_home.*
 
+/**
+ * 新闻首页Fragment
+ *
+ * @author Avery
+ */
+
 class HomeFragment : Fragment() {
 
     private val viewModel by lazy {

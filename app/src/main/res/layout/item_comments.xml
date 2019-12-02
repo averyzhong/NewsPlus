@@ -1,52 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:minHeight="120dp"
         app:cardCornerRadius="5dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp">
+
+        <TextView
+                android:id="@+id/tvUserNameIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_avatar"
+                android:gravity="center"
+                android:minWidth="50dp"
+                android:minHeight="50dp"
+                android:textColor="#FFFFFF"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="寒" />
+
         <TextView
                 android:id="@+id/tvUser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxWidth="200dp"
-                tools:text="寒风"
-                android:textSize="14sp"
+                android:layout_marginLeft="10dp"
+                android:ellipsize="end"
+                android:maxWidth="160dp"
+                android:singleLine="true"
                 android:textColor="#A5A1A1"
                 android:textIsSelectable="true"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                android:textSize="22sp"
+                app:layout_constraintBaseline_toBaselineOf="@id/tvUserNameIndicator"
+                app:layout_constraintLeft_toRightOf="@id/tvUserNameIndicator"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="寒风" />
+
         <TextView
                 android:id="@+id/tvCommentTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="2019-08-30"
-                android:textSize="10sp"
                 android:textColor="#A5A1A1"
                 android:textIsSelectable="true"
+                android:textSize="12sp"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="SmallSp"/>
+                tools:ignore="SmallSp"
+                tools:text="2019-08-30" />
 
         <TextView
                 android:id="@+id/tvComment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="评论内容"
-                android:textIsSelectable="true"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
                 android:lineSpacingExtra="4dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvUser"/>
+                android:textIsSelectable="true"
+                app:layout_constraintLeft_toRightOf="@id/tvUserNameIndicator"
+                app:layout_constraintTop_toBottomOf="@id/tvUserNameIndicator"
+                tools:text="评论内容" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

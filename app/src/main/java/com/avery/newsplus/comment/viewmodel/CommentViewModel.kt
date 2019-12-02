@@ -7,6 +7,12 @@ import com.avery.newsplus.api.model.Comment
 import com.avery.newsplus.comment.datasource.CommentDataSourceFactory
 import com.avery.newsplus.comment.repository.CommentRepository
 
+/**
+ * 新闻评论ViewModel
+ *
+ * @author Avery
+ */
+
 class CommentViewModel(
     private val repository: CommentRepository
 ) : ViewModel() {

@@ -13,6 +13,12 @@ import kotlinx.android.synthetic.main.item_comments.*
 import java.text.SimpleDateFormat
 import java.util.*
 
+/**
+ * 新闻评论数据适配器
+ *
+ * @author Avery
+ */
+
 class CommentAdapter : PagedListAdapter<Comment, CommentAdapter.ViewHolder>(DIFF_CALLBACK) {
     private var layoutInflater: LayoutInflater? = null
 
@@ -37,6 +43,9 @@ class CommentAdapter : PagedListAdapter<Comment, CommentAdapter.ViewHolder>(DIFF
 
         fun onBind(item: Comment?) {
             item?.let {
+                if (item.replier.isNotEmpty()) {
+                    tvUserNameIndicator.text = item.replier.subSequence(0, 1)
+                }
                 tvUser.text = it.replier
                 tvCommentTime.text = dateFormat.format(Date(it.replyTime * 1000))
                 tvComment.text = it.replyContent

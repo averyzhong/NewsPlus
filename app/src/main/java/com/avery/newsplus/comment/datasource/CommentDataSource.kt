@@ -6,6 +6,12 @@ import com.avery.newsplus.comment.repository.CommentRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
+/**
+ * 新闻评论数据源
+ *
+ * @author Avery
+ */
+
 class CommentDataSource(
     private val coroutineScope: CoroutineScope,
     private val newsId: String,

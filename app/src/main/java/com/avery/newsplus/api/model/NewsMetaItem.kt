@@ -4,6 +4,12 @@ import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
+/**
+ * 新闻列表Item
+ *
+ * @author Avery
+ */
+
 data class NewsMetaItem(
     val aid: String?,
     val title: String?,

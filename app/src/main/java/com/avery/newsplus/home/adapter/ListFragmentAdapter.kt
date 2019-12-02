@@ -1,11 +1,18 @@
 package com.avery.newsplus.home.adapter
 
 import android.os.Bundle
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.avery.newsplus.api.model.Category
 import com.avery.newsplus.list.NewsListFragment
+
+/**
+ * 新闻首页数据适配器
+ *
+ * @author Avery
+ */
 
 class ListFragmentAdapter(
     fragmentManager: FragmentManager,

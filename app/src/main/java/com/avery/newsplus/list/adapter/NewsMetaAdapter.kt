@@ -15,6 +15,12 @@ import kotlinx.android.synthetic.main.item_news_meta.*
 import java.text.SimpleDateFormat
 import java.util.*
 
+/**
+ * 新闻列表数据适配器
+ *
+ * @author Avery
+ */
+
 class NewsMetaAdapter(
     private val onItemClickListener: ((NewsMetaItem) -> Unit)?
 ) : PagedListAdapter<NewsMetaItem, NewsMetaAdapter.ViewHolder>(DIFF_CALLBACK) {

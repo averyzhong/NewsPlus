@@ -3,6 +3,12 @@ package com.avery.newsplus.api
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+/**
+ * 新闻API接口工厂
+ *
+ * @author Avery
+ */
+
 object ServiceFactory {
     private const val BASE_URL = "http://api.dagoogle.cn/"
     private val retrofit by lazy {

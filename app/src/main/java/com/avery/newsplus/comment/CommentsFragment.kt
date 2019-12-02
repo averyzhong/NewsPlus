@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.RecyclerView
 import com.avery.newsplus.R
 import com.avery.newsplus.api.NewsService
 import com.avery.newsplus.api.ServiceFactory
@@ -16,6 +18,14 @@ import com.avery.newsplus.comment.adapter.CommentAdapter
 import com.avery.newsplus.comment.repository.CommentRepository
 import com.avery.newsplus.comment.viewmodel.CommentViewModel
 import kotlinx.android.synthetic.main.fragment_comments.*
+import kotlinx.android.synthetic.main.fragment_comments.loadingView
+import kotlinx.android.synthetic.main.fragment_list.*
+
+/**
+ * 新闻评论Fragment
+ *
+ * @author Avery
+ */
 
 @Suppress("UNCHECKED_CAST")
 class CommentsFragment : Fragment() {
@@ -50,6 +60,7 @@ class CommentsFragment : Fragment() {
 
     private fun setupUIElements() {
         adapter = CommentAdapter()
+        adapter.registerAdapterDataObserver(observer)
         commentsRecyclerView.adapter = adapter
     }
 
@@ -65,5 +76,18 @@ class CommentsFragment : Fragment() {
             viewModel.loadNewsComments(newsId)
         }
 
+    }
+
+    private val observer =  object: RecyclerView.AdapterDataObserver() {
+        override fun onItemRangeInserted(positionStart: Int, itemCount: Int) {
+            hideLoadViewIfNeeds()
+        }
+    }
+
+    private fun hideLoadViewIfNeeds() {
+        if (loadingView.isVisible && adapter.itemCount > 0) {
+            loadingView.isVisible = false
+            adapter.unregisterAdapterDataObserver(observer)
+        }
     }
 }

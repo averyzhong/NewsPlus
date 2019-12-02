@@ -2,6 +2,12 @@ package com.avery.newsplus.api.model
 
 import com.google.gson.annotations.SerializedName
 
+/**
+ * 新闻详情
+ *
+ * @author Avery
+ */
+
 data class NewsDetail(
     val aid: String?,
     val title: String?,

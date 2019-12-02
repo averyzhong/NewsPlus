@@ -5,6 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import com.avery.newsplus.R
 
+/**
+ * 新闻评论Activity
+ *
+ * @author Avery
+ */
+
 class CommentsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -2,6 +2,12 @@ package com.avery.newsplus.api.model
 
 import com.google.gson.annotations.SerializedName
 
+/**
+ * 新闻评论
+ *
+ * @author Avery
+ */
+
 data class Comment(
     @SerializedName("reply_id")
     val replyId: String,

@@ -1,7 +1,6 @@
 package com.avery.newsplus.details
 
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -22,9 +21,15 @@ import com.avery.newsplus.comment.CommentsActivity
 import com.avery.newsplus.details.repository.NewsDetailRepository
 import com.avery.newsplus.details.viewmodel.NewsDetailViewModel
 import com.bumptech.glide.Glide
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_details.*
 import org.sufficientlysecure.htmltextview.HtmlHttpImageGetter
 
+/**
+ * 新闻详情Fragment
+ *
+ * @author Avery
+ */
 
 @Suppress("UNCHECKED_CAST")
 class DetailsFragment : Fragment() {
@@ -75,6 +80,9 @@ class DetailsFragment : Fragment() {
             intent.putExtra("newsId", viewModel.getNewsId())
             context?.startActivity(intent)
         }
+        floatBtn.setOnClickListener {
+            Snackbar.make(it, "哈哈，啥也没有😂", Snackbar.LENGTH_LONG).show()
+        }
     }
 
     private fun loadData() {
@@ -100,6 +108,4 @@ class DetailsFragment : Fragment() {
             }
         }
     }
-
-
 }

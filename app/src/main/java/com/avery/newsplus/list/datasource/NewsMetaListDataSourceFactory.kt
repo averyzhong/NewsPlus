@@ -5,6 +5,12 @@ import com.avery.newsplus.api.model.NewsMetaItem
 import com.avery.newsplus.list.repository.NewsListRepository
 import kotlinx.coroutines.CoroutineScope
 
+/**
+ * 新闻列表数据源工厂
+ *
+ * @author Avery
+ */
+
 class NewsMetaListDataSourceFactory(
     private val coroutineScope: CoroutineScope,
     private val categoryId: Int,

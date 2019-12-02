@@ -2,6 +2,12 @@ package com.avery.newsplus.home.repository
 
 import com.avery.newsplus.api.model.Category
 
+/**
+ * 新闻分类数据源，此处写死了几个分类
+ *
+ * @author Avery
+ */
+
 class CategoryRepository {
 
     fun getCategories() = mutableListOf<Category>().also {

@@ -7,6 +7,12 @@ import com.avery.newsplus.api.model.NewsMetaItem
 import com.avery.newsplus.list.datasource.NewsMetaListDataSourceFactory
 import com.avery.newsplus.list.repository.NewsListRepository
 
+/**
+ * 新闻列表ViewModel
+ *
+ * @author Avery
+ */
+
 class NewsListViewModel(
     private val repository: NewsListRepository
 ) : ViewModel() {

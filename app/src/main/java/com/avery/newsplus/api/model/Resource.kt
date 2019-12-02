@@ -1,5 +1,11 @@
 package com.avery.newsplus.api.model
 
+/**
+ * 通用数据资源对象，包含数据的状态和描述
+ *
+ * @author Avery
+ */
+
 class Resource<T> private constructor(
     val data: T?,
     val message: String,

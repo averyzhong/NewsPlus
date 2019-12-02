@@ -9,6 +9,12 @@ import com.avery.newsplus.extentions.launch
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
+/**
+ * 新闻分类ViewModel
+ *
+ * @author Avery
+ */
+
 class CategoryViewModel(
     private val repository: CategoryRepository
 ) : ViewModel() {

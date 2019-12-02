@@ -7,6 +7,12 @@ import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
+/**
+ * 新闻列表数据源
+ *
+ * @author Avery
+ */
+
 class NewsMetaListDataSource(
     private val categoryId: Int,
     private val coroutineScope: CoroutineScope,

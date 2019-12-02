@@ -4,6 +4,12 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 
+/**
+ * 数据懒加载Fragment
+ *
+ * @author Avery
+ */
+
 abstract class LazyLoadFragment : Fragment() {
     private var isDataLoaded = false
     private var isViewCreated = false

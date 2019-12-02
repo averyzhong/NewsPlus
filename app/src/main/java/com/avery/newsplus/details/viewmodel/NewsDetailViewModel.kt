@@ -9,6 +9,12 @@ import com.avery.newsplus.api.model.NewsDetail
 import com.avery.newsplus.details.repository.NewsDetailRepository
 import com.avery.newsplus.extentions.launch
 
+/**
+ * 新闻详情ViewModel
+ *
+ * @author Avery
+ */
+
 class NewsDetailViewModel(
     private val repository: NewsDetailRepository
 ) : ViewModel() {
