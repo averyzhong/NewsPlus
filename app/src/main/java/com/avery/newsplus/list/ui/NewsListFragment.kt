@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.avery.newsplus.R
 import com.avery.newsplus.api.NewsService
 import com.avery.newsplus.api.ServiceFactory
-import com.avery.newsplus.base.BaseLoadFragment
+import com.avery.newsplus.base.LazyLoadFragment
 import com.avery.newsplus.details.ui.DetailsActivity
 import com.avery.newsplus.list.adapter.NewsMetaAdapter
 import com.avery.newsplus.list.repository.NewsListRepository
@@ -29,9 +29,8 @@ import kotlinx.android.synthetic.main.fragment_list.*
  * @author Avery
  */
 
-@Suppress("UNCHECKED_CAST")
-class NewsListFragment : BaseLoadFragment() {
-
+class NewsListFragment : LazyLoadFragment() {
+    override val layoutRes = R.layout.fragment_list
     private lateinit var adapter: NewsMetaAdapter
 
     private val viewModel by lazy {
@@ -39,17 +38,11 @@ class NewsListFragment : BaseLoadFragment() {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
                 val api = ServiceFactory.getService(NewsService::class.java)
                 val repository = NewsListRepository(api)
+                @Suppress("UNCHECKED_CAST")
                 return NewsListViewModel(repository) as T
             }
 
         })[NewsListViewModel::class.java]
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_list, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -69,6 +62,7 @@ class NewsListFragment : BaseLoadFragment() {
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = adapter
     }
+
     private fun subscribe() {
         viewModel.newsMetaItems.observe(viewLifecycleOwner, Observer {
             hideLoadViewIfNeeds()
@@ -88,9 +82,11 @@ class NewsListFragment : BaseLoadFragment() {
     }
 
     private fun hideLoadViewIfNeeds() {
-        if (loadingView.isVisible && adapter.itemCount > 0) {
-            loadingView.isVisible = false
-            adapter.unregisterAdapterDataObserver(observer)
+        loadingView?.let {
+            if (it.isVisible && adapter.itemCount > 0) {
+                it.isVisible = false
+                adapter.unregisterAdapterDataObserver(observer)
+            }
         }
     }
 

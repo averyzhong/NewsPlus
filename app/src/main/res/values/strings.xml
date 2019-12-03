@@ -2,4 +2,10 @@
     <string name="app_name">NewsPlus</string>
     <string name="comment_count">评论数:%1$d</string>
     <string name="show_comments">查看评论(%1$d)>></string>
+    <string name="news_plus">News Plus</string>
+    <string name="avery">Avery</string>
+    <string name="my_favorite">我的收藏</string>
+    <string name="about">关于</string>
+    <string name="add_favorite_success">添加收藏成功！</string>
+    <string name="add_favorite_failed">添加收藏失败</string>
 </resources>

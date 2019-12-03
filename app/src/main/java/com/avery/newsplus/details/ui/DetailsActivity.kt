@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import com.avery.newsplus.R
+import com.avery.newsplus.base.BaseActivity
 
 /**
  * 新闻详情Activity
@@ -11,7 +12,7 @@ import com.avery.newsplus.R
  * @author Avery
  */
 
-class DetailsActivity : AppCompatActivity() {
+class DetailsActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

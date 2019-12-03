@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.avery.newsplus.R
 import com.avery.newsplus.api.NewsService
 import com.avery.newsplus.api.ServiceFactory
+import com.avery.newsplus.base.BaseFragment
 import com.avery.newsplus.comment.adapter.CommentAdapter
 import com.avery.newsplus.comment.repository.CommentRepository
 import com.avery.newsplus.comment.viewmodel.CommentViewModel
@@ -26,35 +27,31 @@ import kotlinx.android.synthetic.main.fragment_comments.loadingView
  * @author Avery
  */
 
-@Suppress("UNCHECKED_CAST")
-class CommentsFragment : Fragment() {
-
+class CommentsFragment : BaseFragment() {
+    override val layoutRes = R.layout.fragment_comments
     private lateinit var adapter: CommentAdapter
-
     private val viewModel by lazy {
         ViewModelProviders.of(this, object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
                 val api = ServiceFactory.getService(NewsService::class.java)
                 val repository = CommentRepository(api)
+                @Suppress("UNCHECKED_CAST")
                 return CommentViewModel(repository) as T
             }
 
         })[CommentViewModel::class.java]
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_comments, container, false)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        loadData()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupUIElements()
         subscribe()
-        loadData()
+
     }
 
     private fun setupUIElements() {
@@ -84,9 +81,11 @@ class CommentsFragment : Fragment() {
     }
 
     private fun hideLoadViewIfNeeds() {
-        if (loadingView.isVisible && adapter.itemCount > 0) {
-            loadingView.isVisible = false
-            adapter.unregisterAdapterDataObserver(observer)
+        loadingView?.let {
+            if (it.isVisible && adapter.itemCount > 0) {
+                it.isVisible = false
+                adapter.unregisterAdapterDataObserver(observer)
+            }
         }
     }
 }

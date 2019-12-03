@@ -35,6 +35,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_plus"
             android:layout_margin="10dp"
+
             app:layout_anchor="@id/appbarLayout"
             app:layout_anchorGravity="bottom|right"
             app:fabSize="normal"/>

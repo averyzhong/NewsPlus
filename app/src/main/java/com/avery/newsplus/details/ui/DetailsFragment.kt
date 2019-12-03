@@ -2,24 +2,24 @@ package com.avery.newsplus.details.ui
 
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.avery.newsplus.R
 import com.avery.newsplus.api.NewsService
-import com.avery.newsplus.api.ServiceFactory
 import com.avery.newsplus.api.model.NewsDetail
 import com.avery.newsplus.api.model.NewsMetaItem
 import com.avery.newsplus.api.model.Resource
+import com.avery.newsplus.base.BaseFragment
 import com.avery.newsplus.comment.ui.CommentsActivity
 import com.avery.newsplus.details.repository.NewsDetailRepository
 import com.avery.newsplus.details.viewmodel.NewsDetailViewModel
+import com.avery.newsplus.extentions.database
+import com.avery.newsplus.extentions.getApiService
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_details.*
@@ -31,25 +31,32 @@ import org.sufficientlysecure.htmltextview.HtmlHttpImageGetter
  * @author Avery
  */
 
-@Suppress("UNCHECKED_CAST")
-class DetailsFragment : Fragment() {
-
+class DetailsFragment : BaseFragment() {
+    override val layoutRes = R.layout.fragment_details
+    private var newsMetaItem: NewsMetaItem? = null
     private val viewModel by lazy {
         ViewModelProviders.of(this, object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-                val api = ServiceFactory.getService(NewsService::class.java)
-                val repository = NewsDetailRepository(api)
+                val api = getApiService(NewsService::class.java)
+                val dao = database().favoriteDao()
+                val repository = NewsDetailRepository(api, dao)
+                @Suppress("UNCHECKED_CAST")
                 return NewsDetailViewModel(repository) as T
             }
 
         })[NewsDetailViewModel::class.java]
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_details, container, false)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        extractArgs()
+        loadData()
+    }
+
+    private fun extractArgs() {
+        arguments?.let {
+            newsMetaItem = it.getParcelable("newsMetaItem") as? NewsMetaItem
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -57,18 +64,14 @@ class DetailsFragment : Fragment() {
         setupUIElement()
         setupEventListeners()
         subscribe()
-        loadData()
     }
 
     private fun setupUIElement() {
         arguments?.let { it ->
-            val newsMetaItem = it.getParcelable("newsMetaItem") as? NewsMetaItem
             newsMetaItem?.let {
                 tvTitle.text = it.title
                 activity?.let { activity ->
-                    Glide.with(activity)
-                        .load(it.headPic)
-                        .into(ivPicture)
+                    Glide.with(activity).load(it.headPic).into(ivPicture)
                 }
             }
         }
@@ -81,19 +84,22 @@ class DetailsFragment : Fragment() {
             context?.startActivity(intent)
         }
         floatBtn.setOnClickListener {
-            Snackbar.make(it, "哈哈，啥也没有😂", Snackbar.LENGTH_LONG).show()
+            Snackbar.make(view!!, "TODO", Snackbar.LENGTH_LONG).show()
         }
     }
 
     private fun loadData() {
-        val newsMetaItem = arguments?.getParcelable("newsMetaItem") as? NewsMetaItem
-        viewModel.loadDetail(newsMetaItem?.aid ?: "")
+        newsMetaItem?.let {
+            viewModel.loadDetail(it.aid ?: "")
+        }
+
     }
 
     private fun subscribe() {
         viewModel.newDetail.observe(viewLifecycleOwner, Observer {
             showDetail(it)
         })
+
     }
 
     private fun showDetail(resource: Resource<NewsDetail>) {

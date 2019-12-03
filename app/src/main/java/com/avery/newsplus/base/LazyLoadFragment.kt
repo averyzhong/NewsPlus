@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
  * @author Avery
  */
 
-abstract class BaseLoadFragment : Fragment() {
+abstract class LazyLoadFragment : BaseFragment() {
     private var isDataLoaded = false
     private var isViewCreated = false
     private var isVisibleToUser = false
