@@ -83,10 +83,10 @@ class NewsListFragment : LazyLoadFragment() {
 
     private fun hideLoadViewIfNeeds() {
         loadingView?.let {
-            if (it.isVisible && adapter.itemCount > 0) {
-                it.isVisible = false
+//            if (it.isVisible && adapter.itemCount > 0) {
+//                it.isVisible = false
                 adapter.unregisterAdapterDataObserver(observer)
-            }
+//            }
         }
     }
 
